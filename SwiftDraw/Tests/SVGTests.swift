@@ -321,17 +321,17 @@ struct SVGHostileTests {
 
     @Test
     func mutualUseCycleDoesNotRecurse() {
-        #expect(load("\(Self.head) width=\"9\" height=\"9\"><g id=\"a\"><use href=\"#b\"/></g><g id=\"b\"><use href=\"#a\"/></g><use href=\"#a\"/></svg>") != nil)
+        #expect(load("\(Self.head) width=\"9\" height=\"9\"><g id=\"a\"><use xlink:href=\"#b\"/></g><g id=\"b\"><use xlink:href=\"#a\"/></g><use xlink:href=\"#a\"/></svg>") != nil)
     }
 
     @Test
     func patternUseCycleDoesNotRecurse() {
-        #expect(load("\(Self.head) width=\"9\" height=\"9\"><pattern id=\"p\" width=\"2\" height=\"2\"><use href=\"#r\"/></pattern><rect id=\"r\" width=\"9\" height=\"9\" fill=\"url(#p)\"/><use href=\"#r\"/></svg>") != nil)
+        #expect(load("\(Self.head) width=\"9\" height=\"9\"><pattern id=\"p\" width=\"2\" height=\"2\"><use xlink:href=\"#r\"/></pattern><rect id=\"r\" width=\"9\" height=\"9\" fill=\"url(#p)\"/><use xlink:href=\"#r\"/></svg>") != nil)
     }
 
     @Test
     func useGradientCycleDoesNotRecurse() {
-        #expect(load("\(Self.head) width=\"9\" height=\"9\"><g id=\"a\"><use href=\"#b\"/></g><g id=\"b\" fill=\"url(#a)\"/></svg>") != nil)
+        #expect(load("\(Self.head) width=\"9\" height=\"9\"><g id=\"a\"><use xlink:href=\"#b\"/></g><g id=\"b\" fill=\"url(#a)\"/></svg>") != nil)
     }
 
     @Test
